@@ -1,0 +1,94 @@
+{
+    "adv_cfg":	{
+        "amad_cfg":	{
+            "attack_fraction":	0.1,
+            "eps_tol":	0.0001,
+            "lr_adv":	0.05,
+            "max_iterations":	60,
+            "tol":	0.0001
+        },
+        "attack_freq":	1,
+        "mad_cfg":	{
+            "eps_tol":	0.0001,
+            "lr_adv":	0.1,
+            "max_iterations":	60,
+            "tol":	0.0001
+        },
+        "max_cost_cfg":	{
+            "cost_weight":	0.5,
+            "eps_tol":	0.0001,
+            "lr_adv":	0.1,
+            "max_iterations":	60,
+            "reward_weight":	0,
+            "tol":	0.0001
+        },
+        "max_reward_cfg":	{
+            "cost_weight":	0,
+            "eps_tol":	0.0001,
+            "lr_adv":	0.1,
+            "max_iterations":	60,
+            "reward_weight":	0.5,
+            "tol":	0.0001
+        },
+        "min_reward_cfg":	{
+            "cost_weight":	0,
+            "eps_tol":	0.0001,
+            "lr_adv":	0.1,
+            "max_iterations":	60,
+            "reward_weight":	-0.5,
+            "tol":	0.0001
+        },
+        "noise_scale":	0.015,
+        "uniform_cfg":	{}
+    },
+    "data_dir":	"DMI_yan-v0_cost_1.5_benchmark_ppo",
+    "device":	"mps",
+    "device_id":	0,
+    "env_cfg":	{
+        "cost_limit":	1.5,
+        "cost_normalizer":	1.5,
+        "env_name":	"DMI_yan-v0",
+        "timeout_steps":	1220
+    },
+    "epochs":	150,
+    "evaluate_episode_num":	1,
+    "exp_name":	"robust_ppo_lag_mode_vanilla",
+    "load_dir":	null,
+    "mode":	"train",
+    "policy_cfg":	{
+        "KD":	0.001,
+        "KI":	0.003,
+        "KP":	0.1,
+        "actor_lr":	0.0005,
+        "batch_size":	300,
+        "buffer_size":	100000,
+        "clip_ratio":	0.2,
+        "clip_ratio_adv":	0.8,
+        "critic_lr":	0.001,
+        "decay_epoch":	30,
+        "episode_rerun_num":	40,
+        "gamma":	0.99,
+        "hidden_sizes":	[
+            256,
+            256
+        ],
+        "interact_steps":	80000,
+        "kl_coef":	1,
+        "lam":	0.97,
+        "per_state":	false,
+        "polyak":	0.995,
+        "rs_mode":	"vanilla",
+        "start_epoch":	0,
+        "target_kl":	0.01,
+        "train_actor_iters":	150,
+        "train_critic_iters":	80
+    },
+    "policy_name":	"robust_ppo_lag",
+    "save_best_epoch":	0,
+    "save_every_epoch":	10,
+    "seed":	11,
+    "suffix":	null,
+    "threads":	8,
+    "verbose":	false,
+    "warmup":	false
+}
