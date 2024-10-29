@@ -1,0 +1,83 @@
+mode: train
+seed: 0
+device: mps
+device_id: 0
+threads: 8
+policy_name: robust_ppo_lag
+epochs: 150
+save_best_epoch: 0
+save_every_epoch: 10
+warmup: false
+evaluate_episode_num: 1
+exp_name: robust_ppo_lag_mode_klmr
+data_dir: DMI_yan-v0_cost_1.5_benchmark_ppo
+load_dir: null
+verbose: false
+suffix: null
+env_cfg:
+    env_name: DMI_yan-v0
+    timeout_steps: 1220
+    cost_limit: 1.5
+    cost_normalizer: 1.5
+adv_cfg:
+    noise_scale: 0.015
+    attack_freq: 1
+    mad_cfg:
+        lr_adv: 0.1
+        max_iterations: 60
+        tol: 0.0001
+        eps_tol: 0.0001
+    amad_cfg:
+        lr_adv: 0.05
+        max_iterations: 60
+        tol: 0.0001
+        eps_tol: 0.0001
+        attack_fraction: 0.1
+    max_cost_cfg:
+        lr_adv: 0.1
+        max_iterations: 60
+        tol: 0.0001
+        eps_tol: 0.0001
+        reward_weight: 0
+        cost_weight: 0.5
+    max_reward_cfg:
+        lr_adv: 0.1
+        max_iterations: 60
+        tol: 0.0001
+        eps_tol: 0.0001
+        reward_weight: 0.5
+        cost_weight: 0
+    min_reward_cfg:
+        lr_adv: 0.1
+        max_iterations: 60
+        tol: 0.0001
+        eps_tol: 0.0001
+        reward_weight: -0.5
+        cost_weight: 0
+    uniform_cfg: {}
+policy_cfg:
+    KP: 0.1
+    KI: 0.003
+    KD: 0.001
+    per_state: false
+    actor_lr: 0.0005
+    critic_lr: 0.001
+    hidden_sizes:
+    - 256
+    - 256
+    gamma: 0.99
+    polyak: 0.995
+    rs_mode: klmr
+    kl_coef: 1
+    lam: 0.97
+    batch_size: 300
+    buffer_size: 100000
+    clip_ratio: 0.2
+    clip_ratio_adv: 0.8
+    target_kl: 0.01
+    train_actor_iters: 150
+    train_critic_iters: 80
+    interact_steps: 80000
+    episode_rerun_num: 40
+    start_epoch: 0
+    decay_epoch: 30
